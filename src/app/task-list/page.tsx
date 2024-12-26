@@ -1,8 +1,8 @@
 'use client'
 
 import { Button } from "@/components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Plus } from 'lucide-react'
+import { useState } from "react"
 
 interface Task {
   task: string
@@ -78,36 +78,49 @@ const tasks: Task[] = [
   }
 ]
 
-export default function TaskTable() {
+export default function Page() {
+  const [activeTab, setActiveTab] = useState("assigned");
+
   return (
     <div className="w-full px-4 py-6">
       <div className="flex justify-between items-center mb-6">
-        <Tabs defaultValue="assigned" className="w-full">
+        <div className="w-full">
           <div className="flex justify-between items-center mb-4">
-            <TabsList>
-              <TabsTrigger 
-                value="assigned" 
-                className="text-green-600 data-[state=active]:text-green-600"
+            <div className="flex bg-white shadow-none border-none">
+              <div 
+                className={`relative text-gray-700 hover:text-gray-900 px-4 py-2 cursor-pointer bg-transparent border-none shadow-none ${activeTab === "assigned" ? "text-green-600" : ""}`}
+                onClick={() => setActiveTab("assigned")}
               >
                 Assigned Task
-              </TabsTrigger>
-              <TabsTrigger value="unassigned">
+                {activeTab === "assigned" && (
+                  <div className="absolute bottom-0 left-0 w-full h-[2px] bg-green-600 transition-all"></div>
+                )}
+              </div>
+              <div 
+                className={`relative text-gray-700 hover:text-gray-900 px-4 py-2 cursor-pointer ${activeTab === "unassigned" ? "text-green-600" : ""}`}
+                onClick={() => setActiveTab("unassigned")}
+              >
                 Unassigned Task
-              </TabsTrigger>
-            </TabsList>
+                {activeTab === "unassigned" && (
+                  <div className="absolute bottom-0 left-0 w-full h-[2px] bg-green-600 transition-all"></div>
+                )}
+              </div>
+            </div>
+
             <Button className="bg-green-600 hover:bg-green-700">
               <Plus className="mr-2 h-4 w-4" />
               Add Task
             </Button>
           </div>
-          <TabsContent value="assigned">
-            <div className="rounded-md border">
-              <table className="w-full">
+
+          {activeTab === "assigned" && (
+            <div className="rounded-md">
+              <table className="w-full border-none">
                 <thead>
-                  <tr className="border-b bg-gray-50">
+                  <tr className="bg-gray-50">
                     <th className="py-3 px-4 text-left text-sm font-medium text-gray-500">TASK</th>
                     <th className="py-3 px-4 text-left text-sm font-medium text-gray-500">ID</th>
-                    <th className="py-3 px-4 text-left text-sm font-medium text-gray-500">STATUS</th>
+                    <th className="py-3 px-4  text-left text-sm font-medium text-gray-500">STATUS</th>
                     <th className="py-3 px-4 text-left text-sm font-medium text-gray-500">TIMER</th>
                     <th className="py-3 px-4 text-left text-sm font-medium text-gray-500">ASSIGNED TO</th>
                   </tr>
@@ -140,12 +153,13 @@ export default function TaskTable() {
                 </tbody>
               </table>
             </div>
-          </TabsContent>
-          <TabsContent value="unassigned">
-            <div className="rounded-md border">
-              <table className="w-full">
+          )}
+
+          {activeTab === "unassigned" && (
+            <div className="rounded-md">
+              <table className="w-full border-none">
                 <thead>
-                  <tr className="border-b bg-gray-50">
+                  <tr className="bg-gray-50">
                     <th className="py-3 px-4 text-left text-sm font-medium text-gray-500">TASK</th>
                     <th className="py-3 px-4 text-left text-sm font-medium text-gray-500">ID</th>
                     <th className="py-3 px-4 text-left text-sm font-medium text-gray-500">STATUS</th>
@@ -154,14 +168,13 @@ export default function TaskTable() {
                   </tr>
                 </thead>
                 <tbody>
-                  {/* Unassigned tasks would go here */}
+                  {/* Add unassigned tasks here */}
                 </tbody>
               </table>
             </div>
-          </TabsContent>
-        </Tabs>
+          )}
+        </div>
       </div>
     </div>
   )
 }
-
