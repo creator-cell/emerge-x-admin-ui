@@ -56,12 +56,12 @@ export function Sidebar() {
               href={route.href}
               className={cn(
                 "text-sm group flex p-3 w-full justify-start font-medium cursor-pointer hover:bg-gray-100 rounded-lg transition",
-                pathname === route.href ? "text-green-600 bg-gray-100" : "text-gray-500"
+                pathname === route.href ? "text-green-600" : "text-black-500"
               )}
             >
               <div className="flex items-center flex-1 gap-4">
                 <route.icon  />
-                <div className="text-[16px] text-black">
+                <div className="text-[16px]">
                 {route.label}
                 </div>
               </div>

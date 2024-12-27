@@ -20,7 +20,7 @@ export function Navbar() {
         />
       </Link>
       <div className="flex-1 rounded-[16px]">
-        <div className="relative w-[400px]">
+        <div className="relative w-[400px] rounded-[16px]">
           <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
             <SearchIcon />
           </span>
