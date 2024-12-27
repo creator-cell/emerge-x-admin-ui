@@ -1,17 +1,18 @@
 "use client";
-import CompanyDetails from "@/components/clients/CompanyDetails";
-import SearchAddSection from "@/utils/SearchAddSection";
-import TableComponent from "@/utils/TableComponent";
+
 import React, { useState } from "react";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { SearchIcon } from "@/assets/icons/svg-icons";
+import { Input } from "@/components/ui/input";
+import { Plus } from "lucide-react";
 
 interface Client {
   id: string;
   name: string;
   businessType: string;
-  //   location: string;
-  email?: string;
   contactNumber?: string;
+  email?: string;
   password?: string;
 }
 
@@ -59,31 +60,61 @@ const clients: Client[] = [
 const headers = ["Client", "ID", "Type of Business", "Contact"];
 
 const Page: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedClient, setSelectedClient] = useState<Client | null>(null);
-
-  const handleClientClick = (client: Client) => {
-    setSelectedClient(client);
-  };
-
-  const closeDetails = () => {
-    setSelectedClient(null);
-  };
-
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+ 
 
   return (
     <div className="w-full px-4 py-6">
-      {!selectedClient ? (
-        <>
-          <SearchAddSection onAddClick={() => console.log("Open Add Modal")} />
-          <TableComponent
-            headers={headers}
-            data={clients}
-            onRowClick={handleClientClick}
-            renderRow={(client) => (
-              <>
+      <div className="tableColorBG rounded-[16px] p-4">
+      <div className="flex justify-between items-center mb-4">
+        <div className="flex-1 rounded-[16px]">
+          <div className="relative w-[400px]">
+            <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+              <SearchIcon />
+            </span>
+            <Input
+              placeholder="Search"
+              className="pl-10 w-full bg-gray-50"
+            />
+          </div>
+        </div>
+        <Button
+          className="buttonBGG hover:bg-green-700"
+        >
+          <div className="border border-white rounded-[3px]">
+            <Plus className="h-4 w-4" />
+          </div>
+          Add Demo
+        </Button>
+      </div>
+
+      <div className="rounded-[50px]">
+        <table className="w-full">
+          <thead>
+            <tr className="tableBG">
+              <th className="py-3 px-4 text-left text-[12px] font-medium text-gray-500">
+                CLIENT
+              </th>
+              <th className="py-3 px-4 text-left text-[12px] font-medium text-gray-500">
+                ID
+              </th>
+              <th className="py-3 px-4 text-left text-[12px] font-medium text-gray-500">
+                TYPE OF BUSINESS
+              </th>
+              <th className="py-3 px-4 text-left text-[12px] font-medium text-gray-500">
+                CONTACT
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {clients.map((client, index) => (
+              <tr
+                key={index}
+                className={`border-b last:border-b-0 ${
+                  (index + 1) % 2 === 0 || index + 1 === 4
+                    ? "tableBG border-none"
+                    : "border-none"
+                }`}
+              >
                 <td className="px-4 py-2 font-medium text-gray-900 flex items-center min-w-[250px]">
                   <Image
                     src="/images/Avatar.svg"
@@ -97,13 +128,12 @@ const Page: React.FC = () => {
                 <td className="px-4 py-2 ">{client.id}</td>
                 <td className="px-4 py-2">{client.businessType}</td>
                 <td className="px-4 py-2">{client.contactNumber}</td>
-              </>
-            )}
-          />
-        </>
-      ) : (
-        <CompanyDetails client={selectedClient} onClose={closeDetails} />
-      )}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
     </div>
   );
 };

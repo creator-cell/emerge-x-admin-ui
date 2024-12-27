@@ -1,6 +1,6 @@
 "use client";
 
-import { ChatIcon, ClientListIcon, DashboardIcon, DemoRequestIcon, SupportIcon, TaskListIcon, TeamIcon } from "@/assets/icons/svg-icons";
+import { ChatIcon, ClientListIcon, DashboardIcon, DemoRequestIcon, RoleIcon, SupportIcon, TaskListIcon, TeamIcon } from "@/assets/icons/svg-icons";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -35,6 +35,11 @@ const routes = [
     label: "Chat",
     icon: ChatIcon,
     href: "/chat",
+  },
+  {
+    label: "Role",
+    icon: RoleIcon,
+    href: "/role",
   },
   {
     label: "Support",

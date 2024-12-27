@@ -19,14 +19,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="h-full relative">
+        <div className="h-screen flex flex-col">
+          {/* Navbar */}
           <Navbar />
-          <div className="hidden h-[calc(100vh-64px)] md:flex md:w-64 md:flex-col md:fixed md:bottom-0 z-[80] bg-white border-r">
-            <Sidebar />
+          <div className="flex flex-1">
+            {/* Sidebar */}
+            <aside className="hidden h-full md:flex md:w-64 mt-12 md:flex-col md:fixed bg-white border-r z-[80]">
+              <Sidebar />
+            </aside>
+            {/* Main Content */}
+            <main className="flex-1 md:pl-64 pt-16 bg-[#f9fafb] overflow-auto">
+              {children}
+            </main>
           </div>
-          <main className="md:pl-64 pt-16 bg-white">
-            {children}
-          </main>
         </div>
       </body>
     </html>

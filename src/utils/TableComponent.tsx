@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 
 interface TableProps<T> {
   headers: string[];
@@ -17,9 +16,9 @@ const TableComponent = <T,>({
   return (
     <table className="w-full text-sm text-left text-gray-500">
       <thead className="text-xs uppercase">
-        <tr>
+        <tr >
           {headers.map((header, idx) => (
-            <th key={idx} scope="col" className="px-4 py-3">
+            <th key={idx} scope="col" className="py-3 px-4 text-left text-sm font-medium text-gray-500">
               {header}
             </th>
           ))}

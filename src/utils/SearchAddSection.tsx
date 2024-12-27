@@ -18,10 +18,12 @@ const SearchAddSection: React.FC<SearchAddSectionProps> = ({ onAddClick }) => {
           <Input placeholder="Search" className="pl-10 w-full bg-gray-50" />
         </div>
       </div>
-      <Button className="bg-green-600 hover:bg-green-700" onClick={onAddClick}>
-        <Plus className="mr-2 h-4 w-4" />
-        Add Client
-      </Button>
+      <Button className="buttonBGG hover:bg-green-700" >
+              <div className="border border-white rounded-[3px]">
+              <Plus className="h-4 w-4" />
+              </div>
+              Add Task
+            </Button>
     </div>
   );
 };
