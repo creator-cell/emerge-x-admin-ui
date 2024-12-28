@@ -1,6 +1,6 @@
 "use client";
 
-import { ChatIcon, ClientListIcon, CompanyDetailsIcon, DashboardIcon, DemoRequestIcon, DocumentsIcon, InvoiceIcon, RoleIcon, SupportIcon, TaskListIcon, TeamIcon } from "@/assets/icons/svg-icons";
+import {  CompanyDetailsIcon, DocumentsIcon, InvoiceIcon, TaskListIcon } from "@/assets/icons/svg-icons";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";

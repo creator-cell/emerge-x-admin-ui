@@ -2,36 +2,36 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { Plus, Upload } from "lucide-react";
+import { Plus } from "lucide-react";
 import { CrossIcon, SearchIcon } from "@/assets/icons/svg-icons";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Modal from "@/components/Modal";
 
-interface Client {
-  id: string;
-  name: string;
-  businessType: string;
-  location: string;
-  email?: string;
-  contactNumber?: string;
-  password?: string;
-}
+const roles = [
+    {
+      role: "DPA/CSO",
+      id: "COM-93HS",
+      description:
+        "Ensuring the safety, security, and environmental protection of ships...",
+    },
+    {
+      role: "ARAMCO AVIATION",
+      id: "COM-93HS",
+      description:
+        "Providing essential services to Saudi Aramco and other organizations...",
+    },
+    {
+      role: "EMERGENCY RESPONSE CENTER",
+      id: "COM-93HS",
+      description:
+        "Information gathering, decision-making, and resource allocation during...",
+    },
+  ];
 
-const TeamData = [
-  { team: "EMERGENCY RESPONSE CENTER", id: "COM-93HS", role: "VTS", teamOf: 5 },
-  { team: "MARINE QACU", id: "COM-93HS", role: "MRJN", teamOf: 2 },
-  { team: "ONSHORE SUPPORTS", id: "COM-93HS", role: "Kanoo", teamOf: 4 },
-  { team: "24/7 Emergency Hotline", id: "COM-93HS", role: "SPT", teamOf: 10 },
-  { team: "PROJECT MANAGEMENT TEAM", id: "COM-93HS", role: "DPA/CSO", teamOf: 6 },
-  { team: "ARAMCO AVIATION", id: "COM-93HS", role: "RT HELICOPTER DISPATCH", teamOf: 3 },
-];
-
-const headers = ["Team", "ID", "Role", "Team of", "Action"];
 
 const Page: React.FC = () => {
   
-    const [activeTab, setActiveTab] = useState("assigned");
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [formData, setFormData] = useState({
       taskHead: "",
@@ -66,12 +66,12 @@ const Page: React.FC = () => {
             </div>
             <Button
               className="buttonBGG hover:bg-green-700"
-              onClick={() => setIsDialogOpen(true)}
+              
             >
               <div className="border border-white rounded-[3px]">
                 <Plus className="h-4 w-4" />
               </div>
-              Add Team
+              Add Role
             </Button>
           </div>
      
@@ -79,15 +79,14 @@ const Page: React.FC = () => {
         <table className="w-full">
           <thead>
             <tr className="tableBG">
-              <th className="py-3 px-4 text-left text-[12px] font-medium text-gray-500">TEAM</th>
+              <th className="py-3 px-4 text-left text-[12px] font-medium text-gray-500">Roles</th>
               <th className="py-3 px-4 text-left text-[12px] font-medium text-gray-500">ID</th>
-              <th className="py-3 px-4 text-left text-[12px] font-medium text-gray-500">ROLE</th>
-              <th className="py-3 px-4 text-left text-[12px] font-medium text-gray-500">TEAM OF</th>
-              <th className="py-3 px-4 text-left text-[12px] font-medium text-gray-500">ACTION</th>
+              <th className="py-3 px-4 text-left text-[12px] font-medium text-gray-500">Description</th>
+
             </tr>
           </thead>
           <tbody>
-            {TeamData.map((team, index) => (
+            {roles.map((team, index) => (
               <tr
                 key={index}
                 className={`border-b last:border-b-0 ${
@@ -96,22 +95,21 @@ const Page: React.FC = () => {
                 
               >
                 <td className="px-4 py-2 font-medium text-gray-900 flex items-center min-w-[250px]">
-                  {team.team}
+                  {team.role}
                 </td>
                 <td className="px-4 py-2 ">{team.id}</td>
                 <td className="px-4 py-2">{team.role}</td>
-                <td className="px-4 py-2">{team.teamOf}</td>
                 <td className="px-4 py-2 flex items-center">
                   <Image
                     src="/images/trash.svg"
-                    alt={team.team}
+                    alt={team.role}
                     width={24}
                     height={24}
                     className="mr-4"
                   />
                   <Image
                     src="/images/edit.svg"
-                    alt={team.team}
+                    alt={team.role}
                     width={24}
                     height={24}
                     className="mr-2"

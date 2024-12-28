@@ -1,3 +1,14 @@
+// Define the Client type if it's not defined elsewhere
+interface Client {
+  id: string;
+  name: string;
+  businessType: string;
+  location: string;
+  email?: string;
+  contactNumber?: string;
+  password?: string;
+}
+
 interface CompanyDetailsProps {
   client: Client;
   onClose: () => void;

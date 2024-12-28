@@ -55,23 +55,26 @@ export function Sidebar() {
     <div className="space-y-4 py-4 flex flex-col h-full bg-white">
       <div className="px-3 py-2">
         <div className="space-y-1">
-          {routes.map((route) => (
-            <Link
-              key={route.href}
-              href={route.href}
-              className={cn(
-                "text-sm group flex p-3 w-full justify-start font-medium cursor-pointer hover:bg-gray-100 rounded-lg transition",
-                pathname === route.href ? "text-green-600" : "text-black-500"
-              )}
-            >
-              <div className="flex items-center flex-1 gap-4">
-                <route.icon  />
-                <div className="text-[16px]">
-                {route.label}
+          {routes.map((route) => {
+            const isActive = pathname === route.href;
+            return (
+              <Link
+                key={route.href}
+                href={route.href}
+                className={cn(
+                  "text-sm group flex p-3 w-full justify-start font-medium cursor-pointer hover:bg-gray-100 rounded-lg transition",
+                  isActive ? "text-green-600" : "text-black-500"
+                )}
+              >
+                <div className="flex items-center flex-1 gap-4">
+                  <route.icon fill={isActive ? "#16A34A" : undefined} /> {/* Dynamically pass fill */}
+                  <div className="text-[16px]">
+                    {route.label}
+                  </div>
                 </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </div>

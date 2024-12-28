@@ -5,7 +5,7 @@ import Image from "next/image";
 import { CrossIcon, LocationIcon, SearchIcon, UploadIcon } from "@/assets/icons/svg-icons";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Locate, Plus, Upload } from "lucide-react";
+import {  Plus } from "lucide-react";
 import Modal from "@/components/Modal";
 import Link from "next/link";
 
@@ -61,14 +61,9 @@ const clients: Client[] = [
   },
 ];
 
-const headers = ["Client", "ID", "Type of Business", "Location"];
 
 const Page: React.FC = () => {
  
-
-  
-
-  const [activeTab, setActiveTab] = useState("assigned");
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [formData, setFormData] = useState({
     taskHead: "",

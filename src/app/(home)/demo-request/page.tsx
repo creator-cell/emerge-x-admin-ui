@@ -1,6 +1,4 @@
-"use client";
 
-import React, { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { SearchIcon } from "@/assets/icons/svg-icons";
@@ -57,7 +55,6 @@ const clients: Client[] = [
   },
 ];
 
-const headers = ["Client", "ID", "Type of Business", "Contact"];
 
 const Page: React.FC = () => {
  

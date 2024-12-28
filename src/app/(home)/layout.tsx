@@ -1,9 +1,8 @@
-import '../../globals.css';
+import '../globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Sidebar } from '@/components/layout/sidebar';
 import { Navbar } from '@/components/layout/navbar';
-import { ClientSidebar } from '@/components/layout/client-sidebar';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -26,7 +25,7 @@ export default function RootLayout({
           <div className="flex flex-1">
             {/* Sidebar */}
             <aside className="hidden h-full md:flex md:w-64 mt-12 md:flex-col md:fixed bg-white border-r z-[80]">
-              <ClientSidebar />
+              <Sidebar />
             </aside>
             {/* Main Content */}
             <main className="flex-1 md:pl-64 pt-16 bg-[#f9fafb] overflow-auto">

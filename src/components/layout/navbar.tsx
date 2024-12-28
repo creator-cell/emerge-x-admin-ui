@@ -19,8 +19,10 @@ export function Navbar() {
           src={"/images/Vector.png"}
         />
       </Link>
+
+      {/* Search bar */}
       <div className="flex-1 rounded-[16px]">
-        <div className="relative w-[400px] rounded-[16px]">
+        <div className="relative w-full sm:w-[300px] md:w-[400px] lg:w-[500px] xl:w-[600px]">
           <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
             <SearchIcon />
           </span>
@@ -28,6 +30,7 @@ export function Navbar() {
         </div>
       </div>
 
+      {/* Action buttons and avatar */}
       <div className="flex items-center gap-4">
         <Button variant="ghost" size="icon">
           <Settings className="h-5 w-5 text-gray-500" />
@@ -35,6 +38,8 @@ export function Navbar() {
         <Button variant="ghost" size="icon">
           <Bell className="h-5 w-5 text-gray-500" />
         </Button>
+        
+        {/* Avatar */}
         <Avatar>
           <AvatarImage src="https://github.com/shadcn.png" />
           <AvatarFallback>CN</AvatarFallback>
